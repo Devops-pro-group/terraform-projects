@@ -1,0 +1,14 @@
+################################
+###   Goals
+################################
+
+Amazon Linux EC2 Instances in multiple AZs
+An INTERNAL Application Load Balancer (ALB) to distribute the load between these EC2
+ALB Target Group and Listeners for HTTP and HTTPS protocols
+Register DNS Records in Route 53
+Create an SSL certificate using AWS Certificate Manager
+
+Prerequisite 
+#1: AWS Credentials
+Before creating our AWS EC2 Instance, we will need AWS Credentials to execute 
+our Terraform code.

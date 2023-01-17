@@ -4,7 +4,7 @@
 # S3 bucket resource block
 resource "aws_s3_bucket" "dev_Pro-s3" {
   bucket = "devpro-devbucket"
-  acl = "private"
+  acl    = "private"
   tags = {
     Name = "Devops-Pro-S3"
   }
@@ -71,37 +71,39 @@ resource "aws_s3_bucket_public_access_block" "public_access" {
 
 #----------------------------------upload a single object into S3 bucket-----------------#
 
-resource "aws_s3_bucket_object" "first-object" { 
-  bucket = data.aws_s3_bucket.devops-pro-buck.id  
-  key    = "text.txt"
-  source = "C:\\Users\\brist\\Devops-pro\\terraform-projects\\s3\\text.txt"
-}
+# resource "aws_s3_bucket_object" "first-object" {
+#   bucket = data.aws_s3_bucket.devops-pro-buck.id
+#   key    = "text.txt"
+#   source = "C:\\Users\\brist\\Devops-pro\\terraform-projects\\s3\\text.txt"
+# }
 
-#------------------ upload a Multiobject into S3 bucket----------------------------------#
+# #------------------ upload a Multiobject into S3 bucket----------------------------------#
 
-resource "aws_s3_bucket_object" "second-object" { 
-  bucket = data.aws_s3_bucket.devops-pro-buck.id  
-  for_each = fileset("C:\\Users\\brist\\Devops-pro","*")    # The files need to be locate on your local machine so change this path by your own path
-  key    = each.key
-  source = "C:\\Users\\brist\\Devops-pro\\${each.value}"
-}
+# resource "aws_s3_bucket_object" "second-object" {
+#   bucket   = data.aws_s3_bucket.devops-pro-buck.id
+#   for_each = fileset("C:\\Users\\brist\\Devops-pro", "*") # The files need to be locate on your local machine so change this path by your own path
+#   key      = each.key
+#   source   = "C:\\Users\\brist\\Devops-pro\\${each.value}"
+# }
 
 
 #--------------------------Create Object---------------------------------------------------#
 
-resource "aws_s3_bucket_object" "third-object" { 
-  bucket = data.aws_s3_bucket.devops-pro-buck.id  
-  key    = "${var.my_folders}/"                                      
-  acl = "private"
-  content_type = "application/x-directory"
-}
+# resource "aws_s3_bucket_object" "third-object" {
+#   bucket       = data.aws_s3_bucket.devops-pro-buck.id
+#   key          = "${var.my_folders}/"
+#   acl          = "private"
+#   content_type = "application/x-directory"
+# }
 
 
 #--------------------------------S3 Objects inside Folder---------------------------------------#
 
-resource "aws_s3_bucket_object" "fifth-object" { 
-  bucket = data.aws_s3_bucket.devops-pro-buck.id  
-  for_each = fileset("C:\\Users\\brist\\Devops-pro","*")    # The files need to be locate on your local machine so change this path by your own path
-  key    = "${var.my_folders}/${each.key}"
-  source = "C:\\Users\\brist\\Devops-pro\\${each.value}"
-}
+# resource "aws_s3_bucket_object" "fifth-object" {
+#   bucket   = data.aws_s3_bucket.devops-pro-buck.id
+#   for_each = fileset("C:\\Users\\brist\\Devops-pro", "*") # The files need to be locate on your local machine so change this path by your own path
+#   key      = "${var.my_folders}/${each.key}"
+#   source   = "C:\\Users\\brist\\Devops-pro\\${each.value}"
+#   #good job
+# }
+
